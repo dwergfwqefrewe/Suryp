@@ -1,0 +1,703 @@
+/* === ГЛАВНЫЙ ФАЙЛ СТИЛЕЙ === */
+
+/* Импорт всех стилей */
+@import './main.css';
+@import './navbar.css';
+@import './auth.css';
+@import './articles.css';
+@import './profile.css';
+@import './messenger.css';
+@import './forms.css';
+@import './utilities.css';
+
+/* === ДОПОЛНИТЕЛЬНЫЕ ГОЛОБАЛЬНЫЕ СТИЛИ === */
+
+/* Неоновый дизайн - базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Неоновые цвета */
+:root {
+  --neon-purple: #b026ff;
+  --neon-blue: #00d4ff;
+  --neon-pink: #ff006e;
+  --neon-cyan: #00ffff;
+  --dark-bg: #0a0a0a;
+  --darker-bg: #050505;
+  --card-bg: rgba(26, 26, 46, 0.8);
+  --border-glow: rgba(176, 38, 255, 0.3);
+}
+
+/* Неоновые эффекты */
+.neon-glow {
+  box-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+}
+
+/* Анимации */
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.9; }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.neon-flicker {
+  animation: neon-flicker 3s ease-in-out infinite;
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-purple);
+  border-radius: 4px;
+  box-shadow: 0 0 5px var(--neon-purple);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Общие стили для контейнеров */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Карточки с неоновым эффектом */
+.neon-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-glow);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.neon-card:hover {
+  border-color: var(--neon-purple);
+  box-shadow: 
+    0 0 10px var(--neon-purple),
+    0 0 20px var(--neon-purple),
+    0 0 30px var(--neon-purple);
+  transform: translateY(-2px);
+}
+
+/* Кнопки */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-purple {
+  background: var(--neon-purple);
+  color: white;
+  box-shadow: 
+    0 0 10px var(--neon-purple),
+    0 0 20px var(--neon-purple),
+    0 0 30px var(--neon-purple);
+}
+
+.btn-purple:hover {
+  background: #a020e0;
+  box-shadow: 
+    0 0 15px var(--neon-purple),
+    0 0 25px var(--neon-purple),
+    0 0 35px var(--neon-purple);
+  transform: translateY(-2px);
+}
+
+.btn-blue {
+  background: var(--neon-blue);
+  color: white;
+  box-shadow: 
+    0 0 10px var(--neon-blue),
+    0 0 20px var(--neon-blue),
+    0 0 30px var(--neon-blue);
+}
+
+.btn-blue:hover {
+  background: #00b8e6;
+  box-shadow: 
+    0 0 15px var(--neon-blue),
+    0 0 25px var(--neon-blue),
+    0 0 35px var(--neon-blue);
+  transform: translateY(-2px);
+}
+
+.btn-pink {
+  background: var(--neon-pink);
+  color: white;
+  box-shadow: 
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 30px var(--neon-pink);
+}
+
+.btn-pink:hover {
+  background: #e6005c;
+  box-shadow: 
+    0 0 15px var(--neon-pink),
+    0 0 25px var(--neon-pink),
+    0 0 35px var(--neon-pink);
+  transform: translateY(-2px);
+}
+
+/* Формы */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-glow);
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 
+    0 0 5px var(--neon-blue),
+    0 0 10px var(--neon-blue);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--neon-cyan);
+  text-shadow: none !important;
+  margin-bottom: 15px;
+}
+
+/* Ссылки */
+a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-cyan);
+  text-shadow: 
+    0 0 5px var(--neon-cyan),
+    0 0 10px var(--neon-cyan);
+}
+
+/* Утилиты */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+
+.p-10 { padding: 10px; }
+.p-20 { padding: 20px; }
+.p-30 { padding: 30px; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .neon-card {
+    padding: 15px;
+    margin: 10px 0;
+  }
+}
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(74, 144, 226, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 144, 226, 0.5);
+}
+
+/* Стилизация выделения текста */
+::selection {
+    background: rgba(74, 144, 226, 0.3);
+    color: #e6f3ff;
+}
+
+::-moz-selection {
+    background: rgba(74, 144, 226, 0.3);
+    color: #e6f3ff;
+}
+
+/* Стилизация фокуса для доступности */
+*:focus {
+    outline: 2px solid rgba(74, 144, 226, 0.5);
+    outline-offset: 2px;
+}
+
+/* Скрытие фокуса для элементов, которые не должны его показывать */
+.btn:focus,
+.form-input:focus,
+.nav-link:focus {
+    outline: none;
+}
+
+/* Анимации появления элементов */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-down {
+    animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-left {
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in-right {
+    animation: fadeInRight 0.6s ease-out;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Эффект пульсации */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+    }
+}
+
+/* Эффект мерцания */
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Стили для состояний загрузки */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 25%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton 1.5s infinite;
+}
+
+@keyframes skeleton {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Стили для уведомлений */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    color: #e6f3ff;
+    font-size: 14px;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-color: rgba(81, 207, 102, 0.3);
+    background: rgba(81, 207, 102, 0.1);
+}
+
+.notification.error {
+    border-color: rgba(255, 107, 107, 0.3);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.notification.warning {
+    border-color: rgba(255, 167, 38, 0.3);
+    background: rgba(255, 167, 38, 0.1);
+}
+
+.notification.info {
+    border-color: rgba(41, 182, 246, 0.3);
+    background: rgba(41, 182, 246, 0.1);
+}
+
+/* Стили для кнопок с иконками */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icon-only {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Стили для карточек с градиентными границами */
+.card-gradient {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 24px;
+    overflow: hidden;
+}
+
+.card-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #4a90e2, #357abd, #29b6f6);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Стили для прогресс-баров */
+.progress {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-bar.success {
+    background: linear-gradient(135deg, #51cf66, #40c057);
+}
+
+.progress-bar.warning {
+    background: linear-gradient(135deg, #ffa726, #ff9800);
+}
+
+.progress-bar.danger {
+    background: linear-gradient(135deg, #ff6b6b, #dc3545);
+}
+
+/* Стили для разделителей */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.3), transparent);
+    margin: 20px 0;
+}
+
+.divider-vertical {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(74, 144, 226, 0.3), transparent);
+    margin: 0 20px;
+}
+
+/* Стили для иконок */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+.icon-sm {
+    width: 0.875em;
+    height: 0.875em;
+}
+
+.icon-lg {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+/* Стили для аватаров */
+.avatar {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    font-weight: 600;
+}
+
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+}
+
+.avatar-md {
+    width: 48px;
+    height: 48px;
+    font-size: 1.125rem;
+}
+
+.avatar-lg {
+    width: 64px;
+    height: 64px;
+    font-size: 1.5rem;
+}
+
+.avatar-xl {
+    width: 96px;
+    height: 96px;
+    font-size: 2rem;
+}
+
+/* Стили для статусов */
+.status {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status.online {
+    background: #51cf66;
+    box-shadow: 0 0 0 2px rgba(81, 207, 102, 0.3);
+}
+
+.status.offline {
+    background: #868e96;
+}
+
+.status.away {
+    background: #ffa726;
+    box-shadow: 0 0 0 2px rgba(255, 167, 38, 0.3);
+}
+
+.status.busy {
+    background: #ff6b6b;
+    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
+}
+
+/* Стили для тегов */
+.tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    border-radius: 4px;
+    color: #4a90e2;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin: 2px;
+}
+
+.tag:hover {
+    background: rgba(74, 144, 226, 0.2);
+    border-color: #4a90e2;
+}
+
+.tag.removable {
+    padding-right: 24px;
+    position: relative;
+}
+
+.tag-remove {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #4a90e2;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.tag-remove:hover {
+    background: rgba(74, 144, 226, 0.2);
+    color: #ff6b6b;
+}
+
+.neon-border {
+    box-shadow: 0 0 4px var(--neon-purple);
+} 
