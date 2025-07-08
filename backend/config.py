@@ -1,7 +1,6 @@
 import os
 from typing import List
 from pydantic_settings import BaseSettings
-from pydantic import Field
 
 
 class Settings(BaseSettings):
@@ -9,7 +8,7 @@ class Settings(BaseSettings):
     
     # Основные настройки
     app_name: str = "Syrup Chat API"
-    debug: bool = False
+    debug: bool = True
     
     # База данных
     database_url: str = "sqlite:///./database/database.db"

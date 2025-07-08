@@ -22,12 +22,12 @@ class User(Base):
     """
     __tablename__ = 'users'
 
-    id: int = Column(Integer, primary_key=True)
-    login: str = Column(String, nullable=False, unique=True)
-    password_hash: str = Column(String, nullable=False)
-    role: int = Column(Integer, default=1, nullable=False)
-    avatar_url: str = Column(String, nullable=True)
-    about: str = Column(String, nullable=True)
+    id = Column(Integer, primary_key=True)
+    login = Column(String, nullable=False, unique=True)
+    password_hash = Column(String, nullable=False)
+    role = Column(Integer, default=1, nullable=False)
+    avatar_url = Column(String, nullable=True, default=None)
+    about = Column(String, nullable=True, default=None)
 
     articles = relationship('Article',
                             back_populates='author',
